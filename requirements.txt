@@ -1,0 +1,9 @@
+Cython==3.0.12
+librosa==0.10.2.post1
+nltk==3.9.1
+numpy==2.3.3
+pypinyin==0.53.0
+scipy==1.16.2
+sentence_transformers==4.0.1
+torch==2.6.0+cu124
+torchaudio==2.6.0+cu124

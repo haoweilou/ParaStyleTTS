@@ -16,6 +16,14 @@ Controlling speaking style in text-to-speech (TTS) systems has become a growing 
 
 ## 🚀 How to Run ParaStyleTTS
 
+1. **Clone the repo**
+    ```bash
+    git clone https://github.com/haoweilou/ParaStyleTTS.git
+    cd ParaStyleTTS
+    pip install -r requirements.txt
+    ```
+
+
 2. **Download the checkpoints**
 
    Download the pretrained checkpoints from the following link:  
@@ -51,5 +59,7 @@ style_prompt = ["A young female child speaking English with neutral emotion."]
 
 Although the generated speech is primarily determined by the language of the input text,  
 changing the `style_prompt` can still influence the **accent** and **prosody**. Which will produce speech with a **different accent**.
+
+You can listen to ```mix_ch.wav``` and ```mix_en.wav``` samples to hear the difference between the two styles.
 
 Enjoy experimenting and have fun! 🎧
