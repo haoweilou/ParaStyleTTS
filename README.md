@@ -16,17 +16,40 @@ Controlling speaking style in text-to-speech (TTS) systems has become a growing 
 
 ## 🚀 How to Run ParaStyleTTS
 
-1. **Download the checkpoints**
+2. **Download the checkpoints**
 
    Download the pretrained checkpoints from the following link:  
    [Download Checkpoints (OneDrive)](https://unsw-my.sharepoint.com/:u:/g/personal/z5258575_ad_unsw_edu_au/EVu9cwOmIfJNmeMdI5R3ZtcBV0slBICNHUZBW7bYRy-ZzA?e=itFBau)
 
    Place the downloaded files inside the `ckp/` folder.
 
-2. **Generate speech samples**
+3. **Generate speech samples**
 
    Run the following command:
 
    ```bash
    python generate.py -c config/config.json
    ```
+
+The generated speech samples will be saved in the `sample/` folder.
+
+You can modify both the text and the `style_prompt` as you wish.  
+Currently, the model supports speaking style control over four dimensions:
+
+- **Age:** child, teenager, young adult, adult  
+- **Emotion:** angry, happy, sad, neutral, surprise  
+- **Gender:** male, female  
+- **Language:** English, Chinese  
+
+You can specify the speaking style using natural language.  
+For example:
+
+```python
+text = "hello world how are you"
+style_prompt = ["A young female child speaking English with neutral emotion."]
+```
+
+Although the generated speech is primarily determined by the language of the input text,  
+changing the `style_prompt` can still influence the **accent** and **prosody**. Which will produce speech with a **different accent**.
+
+Enjoy experimenting and have fun! 🎧
