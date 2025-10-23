@@ -747,7 +747,12 @@ class VITS(nn.Module):
     o = self.dec((z * y_mask)[:,:,:max_len], g=g)
     return o, attn, y_mask, (z, z_p, m_p, logs_p)
 
-class ParaStyleTTS(nn.Module):
+from huggingface_hub import PyTorchModelHubMixin
+
+class ParaStyleTTS(nn.Module,
+                  PyTorchModelHubMixin,
+                  repo_url="https://github.com/haoweilou/ParaStyleTTS",
+                  paper_url="https://arxiv.org/abs/2510.18308"):
   """
   Synthesizer for Training
   """

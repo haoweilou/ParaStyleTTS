@@ -1,20 +1,10 @@
 from tts.model import ParaStyleTTS
-import utils
 import torch
 from utils import save_audio
+from g2p import mix_to_ipa,ipa_to_idx,mixed_sentence_to_ipa
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-from g2p import all_ipa_phoneme,mix_to_ipa,ipa_to_idx,mixed_sentence_to_ipa
-hps = utils.get_hparams()
-
-n_tones = 8
-tts = ParaStyleTTS(len(all_ipa_phoneme),n_tones,
-        hps.data.filter_length // 2 + 1,
-        hps.train.segment_size // hps.data.hop_length,
-        **hps.model).to(device)
-utils.load_checkpoint(f"./ckp/ParaStyleTTS.pth", tts, None)
-tts.eval()
-
+tts = ParaStyleTTS.from_pretrained("haoweilou/ParaStyleTTS").to(device)
 
 from sentence_transformers import SentenceTransformer
 style_encoder = SentenceTransformer('all-mpnet-base-v2',trust_remote_code=True)
