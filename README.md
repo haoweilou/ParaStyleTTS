@@ -64,3 +64,31 @@ changing the `style_prompt` can still influence the **accent** and **prosody**. 
 You can listen to ```mix_ch.wav``` and ```mix_en.wav``` samples to hear the difference between the two styles.
 
 Enjoy experimenting and have fun! 🎧
+
+## 🏋️ Training your own model:
+1. Preparing Data
+
+To train your own version of ParaStyleTTS, you first need to prepare the training data. An example CSV file is provided at ```fileloader/example.csv```
+
+Each audio entry should include the following fields:
+
+- **file_path**: Path to the audio file (all audio is assumed to be normalized to **22.05 kHz**)
+- **sentence**: The transcription of the speech
+- **caption**: A textual description of the speaking style
+
+You can prepare your dataset using the template in the `fileloader` directory, and then run:
+```bash
+python preprocess.py
+```
+This script tokenizes English and Chinese text into IPA phonemes and extracts language-specific prosody style tokens.
+The processed CSV file will be saved in the same directory. Please refer to the example CSV file to see the generated IPA and style fields.
+
+2. Training Your Own Model
+
+Before training, update line 24 in the training script to point to the processed CSV file you are using. Then run:
+
+```bash
+python train.py
+```
+
+Note: Training is intended to run on a Linux server.
