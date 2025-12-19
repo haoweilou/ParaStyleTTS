@@ -91,4 +91,4 @@ Before training, update line 24 in the training script to point to the processed
 python train.py
 ```
 
-Note: Training is intended to run on a Linux server.
+**Note**: Training is intended to run on a Linux server.
