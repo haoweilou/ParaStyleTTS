@@ -9,10 +9,8 @@ from scipy.io.wavfile import read
 import torch
 import torchaudio
 import logging
-import sys
 import glob
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging
 
 def normalize_audio(audio, target_peak=0.95):
@@ -62,11 +60,17 @@ class HParams():
 
 def get_hparams():
   parser = argparse.ArgumentParser()
-  parser.add_argument('-c', '--config', type=str, default="./configs/base.json",
+  parser.add_argument('-c', '--config', type=str, default="./config/config.json",
                       help='JSON file for configuration')
   
+  parser.add_argument('-m', '--model', type=str, default="parastyletts",
+                      help='Model name')
+  
   args = parser.parse_args()
-
+  model_dir = os.path.join("./ckp/", args.model)
+  if not os.path.exists(model_dir):
+    os.makedirs(model_dir)
+  
   config_path = args.config
  
   with open(config_path, "r") as f:
@@ -74,6 +78,8 @@ def get_hparams():
 
   config = json.loads(data)
   hparams = HParams(**config)
+  hparams.model_dir = model_dir
+  
   return hparams
 
 def load_wav_to_torch(full_path):
