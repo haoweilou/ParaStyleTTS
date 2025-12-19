@@ -66,7 +66,7 @@ You can listen to ```mix_ch.wav``` and ```mix_en.wav``` samples to hear the diff
 Enjoy experimenting and have fun! 🎧
 
 ## 🏋️ Training your own model:
-1. Preparing Data
+1. **Preparing Data**
 
 To train your own version of ParaStyleTTS, you first need to prepare the training data. An example CSV file is provided at ```fileloader/example.csv```
 
@@ -83,7 +83,7 @@ python preprocess.py
 This script tokenizes English and Chinese text into IPA phonemes and extracts language-specific prosody style tokens.
 The processed CSV file will be saved in the same directory. Please refer to the example CSV file to see the generated IPA and style fields.
 
-2. Training Your Own Model
+2. **Training Your Own Model**
 
 Before training, update line 24 in the training script to point to the processed CSV file you are using. Then run:
 
