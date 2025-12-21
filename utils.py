@@ -84,7 +84,9 @@ def get_hparams():
 
 def load_wav_to_torch(full_path):
   sampling_rate, data = read(full_path)
-  return torch.FloatTensor(data.astype(np.float32)), sampling_rate
+  audio = torch.from_numpy(data).float()
+  audio = audio / 32768.0  # convert to float32, now the range is [-1, 1]
+  return audio, sampling_rate
 
 def load_filepaths_and_text(filename, split="|"):
   with open(filename, encoding='utf-8') as f:
